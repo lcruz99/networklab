@@ -7,6 +7,9 @@ services:
         ipv4_address: 172.20.0.2
       net4:
         ipv4_address: 172.23.0.2
+    volumes:
+      - ./shared/common:/shared/common
+      - ./shared/client1_data:/shared/unique
 
   server1:
     build:
@@ -16,6 +19,9 @@ services:
         ipv4_address: 172.20.0.3
       net2:
         ipv4_address: 172.21.0.3
+    volumes:
+        - ./shared/common:/shared/common
+        - ./shared/server1_data:/shared/unique
 
   server2:
     build:
@@ -25,6 +31,9 @@ services:
         ipv4_address: 172.21.0.4
       net3:
         ipv4_address: 172.22.0.4
+    volumes:
+      - ./shared/common:/shared/common
+      - ./shared/server2_data:/shared/unique
 
   client2:
     build:
@@ -34,6 +43,9 @@ services:
         ipv4_address: 172.22.0.5
       net4:
         ipv4_address: 172.23.0.5
+    volumes:
+      - ./shared/common:/shared/common
+      - ./shared/client2_data:/shared/unique
 
 networks:
   net1:
