@@ -10,8 +10,8 @@ services:
       net4:
         ipv4_address: 172.23.0.2
     volumes:
-      - ./shared/common:/shared/common
-      - ./shared/client1_data:/shared/unique
+      - ./shared/common:/home/ubuntu/common
+      - ./shared/client1_data:/home/ubuntu/
 
   server1:
     build:
@@ -22,8 +22,8 @@ services:
       net2:
         ipv4_address: 172.21.0.3
     volumes:
-        - ./shared/common:/shared/common
-        - ./shared/server1_data:/shared/unique
+        - ./shared/common:/home/ubuntu/common
+        - ./shared/server1_data:/home/ubuntu/
 
   server2:
     build:
@@ -34,8 +34,8 @@ services:
       net3:
         ipv4_address: 172.22.0.4
     volumes:
-      - ./shared/common:/shared/common
-      - ./shared/server2_data:/shared/unique
+      - ./shared/common:/home/ubuntu/common
+      - ./shared/server2_data:/home/ubuntu/
 
   client2:
     build:
@@ -46,8 +46,8 @@ services:
       net4:
         ipv4_address: 172.23.0.5
     volumes:
-      - ./shared/common:/shared/common
-      - ./shared/client2_data:/shared/unique
+      - ./shared/common:/home/ubuntu/common
+      - ./shared/client2_data:/home/ubuntu/
 
 networks:
   net1:
