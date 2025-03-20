@@ -9,7 +9,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     socat \
     iperf3 \
     iptables \
-    python3 \ 
+    python3 \
+    python3-requests \
+    tree \
+    vim \
     && rm -rf /var/lib/apt/lists/*
 
 CMD ["tail", "-f", "/dev/null"]
