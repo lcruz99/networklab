@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Successful</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #d4edda;
+        }
+        .success-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        h2 {
+            color: #155724;
+        }
+        p {
+            color: #155724;
+        }
+    </style>
+</head>
+<body>
+
+<div class="success-container">
+    <h2>Login Successful</h2>
+    <p>Welcome, <span id="username">User</span>!</p>
+</div>
+
+<script>
+    // Extract username from query params and display it
+    const params = new URLSearchParams(window.location.search);
+    const username = params.get("username") || "User";
+    document.getElementById("username").textContent = username;
+</script>
+
+</body>
+</html>
