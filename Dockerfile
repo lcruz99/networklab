@@ -13,6 +13,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-requests \
     tree \
     vim \
+    iputils-arping \
+    arp-scan \
+    netcat-traditional \
     && rm -rf /var/lib/apt/lists/*
 
 CMD ["tail", "-f", "/dev/null"]
