@@ -7,8 +7,8 @@ services:
     networks:
       net1:
         ipv4_address: 172.20.0.2
-#      net4:
-#        ipv4_address: 172.23.0.2
+      net4:
+        ipv4_address: 172.23.0.2
     cap_add:
       - ALL
     working_dir: /home/ubuntu/
@@ -51,8 +51,10 @@ services:
     networks:
       net3:
         ipv4_address: 172.22.0.5
-#      net4:
-#        ipv4_address: 172.23.0.5
+      net4:
+        ipv4_address: 172.23.0.5
+    cap_add:
+      - ALL
     volumes:
       - ./shared/common:/home/ubuntu/common
       - ./shared/client2_data:/home/ubuntu/
