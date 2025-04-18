@@ -1,16 +1,16 @@
-## 📦 1. IP (Internet Protocol)
+## 1. IP (Internet Protocol)
 
 - IP is the **core protocol of the Internet**.
 - It handles **packet delivery** from source to destination across networks.
 - Provides **logical addressing** via **IP addresses** (e.g., 192.168.1.1).
 - IP is **connectionless and unreliable** – it doesn't guarantee delivery, order, or error-checking.
 
- ✏️ **Key Features**:
-- Routes packets across multiple networks (hop-by-hop)
+ **Key Features**:
+- Routes packets across multiple networks
 - Works at **Layer 3 (Network Layer)** of the OSI model
-- Supports fragmentation (IPv4 only)
+- Supports fragmentation
 
-🧩 **IP Header Fields (IPv4)**
+ **IP Header Fields (IPv4)**
 
 | Field             | Description                                         |
 |-------------------|-----------------------------------------------------|
@@ -29,18 +29,18 @@
 
 ---
 
-## 📨 2. UDP (User Datagram Protocol)
+## 2. UDP (User Datagram Protocol)
 
 - UDP is a **connectionless**, **lightweight** transport protocol.
 - Does **not guarantee delivery, ordering, or reliability** – but it’s faster and simpler than TCP.
 - Used in real-time applications like **video streaming**, **DNS**, **VoIP**, and **games**.
 
- ✏️ **Key Features**:
+ **Key Features**:
 - No handshake or retransmissions
 - Each packet is independent
 - Low overhead and faster delivery
 
-🧩 **UDP Header Fields**
+ **UDP Header Fields**
 
 | Field             | Description                                        |
 |-------------------|----------------------------------------------------|
@@ -51,18 +51,18 @@
 
 ---
 
-## 🔗 3. TCP (Transmission Control Protocol)
+## 3. TCP (Transmission Control Protocol)
 
 - TCP is a **connection-oriented**, **reliable** protocol built on top of IP.
 - Ensures **ordered**, **error-checked**, and **complete** data delivery.
 - Commonly used in web traffic, email, file transfers, etc.
 
-✏️ **Key Features**:
+ **Key Features**:
 - 3-way handshake (SYN, SYN-ACK, ACK) to establish connections
 - Acknowledgment, retransmission, and congestion control
 - Works at **Layer 4 (Transport Layer)**
 
-🧩 **TCP Header Fields**
+**TCP Header Fields**
 
 | Field             | Description                                        |
 |-------------------|----------------------------------------------------|
@@ -79,7 +79,7 @@
 
 ---
 
-## 🔄 Relationship Between IP, TCP, and UDP
+## Relationship Between IP, TCP, and UDP
 
 - **IP** handles **delivery of packets** across networks.
 - **TCP and UDP** use IP to **send data between applications**.
@@ -87,27 +87,25 @@
   - IP wraps the TCP or UDP header
   - IP handles routing, while TCP/UDP handle how data is handled **at the destination**
 
-## 🚦 Congestion Algorithms – Functionalities & Capabilities 
+## Congestion Algorithms – Functionalities & Capabilities 
 
 TCP congestion control algorithms are critical for ensuring the Internet remains stable and efficient. They determine **how a sender behaves under pressure**, especially when the network is overloaded or lossy.
 
-### 🎯 Core Capabilities:
+### Core Capabilities:
 - **Bandwidth probing**: Gradually increase sending rate to test available capacity (e.g., Slow Start)
 - **Loss detection**: Detect congestion via packet loss or delay (e.g., Fast Retransmit, Duplicate ACKs)
 - **Backoff**: Reduce sending rate to ease pressure on the network
 
-### 🧪 Examples:
+### Examples:
 | Algorithm| Strengths                              | Weaknesses                       |
 |----------|----------------------------------------|----------------------------------|
 | **Reno** | Simple, works well in stable networks  | Inefficient in high-BDP networks |
 | **Cubic**|  Aggressive growth, Linux default      | Bursty in some conditions        |
 | **BBR**  | Measures bandwidth & RTT, proactive    | Can starve traditional flows     |
 
-> ✨ Modern congestion algorithms (like BBR) treat the network as a **model** to be measured, not just reacted to.
-
 ---
 
-## 🔁 TCP Errors
+## TCP Errors
 
 - **Retransmission**: The packet likely got lost or delayed. Could be congestion, routing issue, or a flaky(not working, for Pawel) link .
 - **Spurious Retransmission**: Timer expired, but the original packet was actually delivered. Could indicate incorrect RTT estimation.
@@ -115,11 +113,9 @@ TCP congestion control algorithms are critical for ensuring the Internet remains
 - **Duplicate ACKs**: Receiver got something unexpected. Suggests packet loss or reordering.
 - **Zero Window**: Receiver is overwhelmed. Flow control is throttling the sender.
 
-> 🔎 These "errors" aren't mistakes — they are **signals** that help the protocol adapt.
-
 ---
 
-## 📦 MTU Mismatches (we learned about MTU on previous lecture)
+## MTU Mismatches (we learned about MTU on previous lecture)
 
 When two devices have different **Maximum Transmission Unit (MTU)** settings, packets may be:
 
@@ -127,15 +123,13 @@ When two devices have different **Maximum Transmission Unit (MTU)** settings, pa
 2. **Dropped with ICMP "Fragmentation Needed"** (if DF flag is set)
 3. **Lost silently** if ICMP is blocked (→ PMTU black hole)
 
-### 🔍 Path MTU Discovery (PMTUD)
+### Path MTU Discovery (PMTUD)
 - Helps avoid fragmentation by probing MTU along the route
 - **Breaks** if ICMP is filtered by firewalls
 
-> ✨ MTU mismatches are a hidden cause of "it works… but not for large files."
-
 ---
 
-## 🏴 TCP Scans – Flags and Stealth
+## TCP Scans – Flags and Stealth
 
 **XMAS and NULL scans** manipulate TCP flags to probe firewalls or OSes.
 
@@ -146,11 +140,9 @@ Based on **RFC 793**, closed ports should respond with RST, while open ports **m
 
 These scans rely on **non-standard behavior** and are useful for **OS fingerprinting** and **evading intrusion detection**.
 
-> 🕵️ They are not "errors" — they are tools that **exploit how TCP deals with ambiguity.**
-
 ---
 
-## 🚫 Why TCP Can’t Be Used for Multicast
+## Why TCP Can’t Be Used for Multicast
 
 Multicast is inherently **one-to-many**, and TCP is designed for **one-to-one** connections. (live cast, game server)
 
@@ -163,4 +155,4 @@ In multicast, there's:
 - No concept of "peer state"
 - No way to ensure ACKs from multiple recipients
 
-> 📡 That’s why **UDP is the backbone of multicast protocols** like IGMP, RTP, and PIM.
+**UDP is the backbone of multicast protocols**
