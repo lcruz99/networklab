@@ -15,6 +15,41 @@ Some of the output formatting might be different too.
 For example: `nc -nlv 1000` is actually missing the verbose output
 that is present in the Linux version.
 
+## Setup
+
+If you have macOS already, you can quickly setup a VM image
+for experimenting with `tart`
+
+```sh
+brew install cirruslabs/cli/tart
+
+tart clone ghcr.io/cirruslabs/macos-sonoma-base:latest sonoma-base
+tart run sonoma-base
+
+ssh admin@$(tart ip sonoma-base)
+# pass: admin
+```
+
+Otherwise you can try using the nat-lab VM
+
+```sh
+vagrant up mac
+vagrant ssh mac
+```
+
+## Logging
+
+To monitor system or application logs use the Console app,
+or `log` command.
+
+```sh
+log show --start "2025-04-25 11:30:00" --end "2025-04-25 15:30:00" --debug --info
+
+log stream --predicate 'subsystem=="com.apple.mDNSResponder"'
+
+log stream --predicate 'process contains "NordVPN" and eventMessage contains "error"'
+```
+
 ## Network configuration
 
 `ifconfig` is still used instead of `ip` command.
