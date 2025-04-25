@@ -2,7 +2,7 @@
 
 ## Intro
 
-macOS is build on top of XNU kernel, with user space parts derived from FreeBSD.
+macOS is build on top of XNU (XNU is Not Unix) kernel, with user space parts derived from FreeBSD.
 [XNU source code](https://github.com/apple-oss-distributions/xnu)
 
 A lot of the built-in tools are just forks of the usual suspects...
