@@ -8,7 +8,7 @@ dst_port = int(sys.argv[2])
 
 ip = IP(dst=ip)
 src_port = RandShort()
-tcp = TCP(sport=src_port, dport=dst_port, flags="S", seq = 123, ack = 4)
+tcp = TCP(sport=src_port, dport=dst_port, flags="S")
 pkt = ip / tcp
 
 syn_ack  = sr1(pkt, timeout=1) #sending a syn request

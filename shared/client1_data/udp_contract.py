@@ -19,6 +19,13 @@ try:
 except socket.timeout:
     print("No response received.")
 
+try:
+    sock.settimeout(3)
+    data, addr = sock.recvfrom(1024)
+    print(f"Received from {addr}: {data}")
+except socket.timeout:
+    print("No response received.")
+
 sock.close()
 
 time.sleep(5)
