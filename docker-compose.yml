@@ -2,6 +2,7 @@ services:
   client1:
     build:
       context: .
+    privileged: true
     networks:
       net1:
         ipv4_address: 172.20.0.2
@@ -38,6 +39,7 @@ services:
   client2:
     build:
       context: .
+    privileged: true
     networks:
       net3:
         ipv4_address: 172.22.0.5
