@@ -3,19 +3,14 @@
 This repository sets up a **4-device network topology** using Docker Compose, where devices are connected as follows:
 
 ```
-      ┌──────────────────────────────────────────── net4 ─────────────────────────────────────────────┐
-      │                                         172.23.0.0/16                                         │
-      │                                                                                               │
-      │                                                                                               │
-      │                                                                                               │
-      │                                                                                               │
-┌─────┴─────┐                   ┌───────────┐                   ┌───────────┐                   ┌─────┴─────┐
+
+┌───────────┐                   ┌───────────┐                   ┌───────────┐                   ┌───────────┐
 │           │                   │           │                   │           │                   │           │
 │  client1  ├────── net1 ───────┤  server1  ├────── net2 ───────┤  server2  ├────── net3 ───────┤  client2  │
-│           │   172.20.0.0/16   │           │   172.21.0.0/16   │           │   172.22.0.0/16   │           │
+│           │   172.20.0.0/24   │           │   172.21.0.0/16   │           │   172.22.0.0/16   │           │
 └───────────┘                   └───────────┘                   └───────────┘                   └───────────┘
   172.20.0.2                      172.20.0.3                      172.21.0.4                      172.22.0.5
-  172.23.0.2                      172.21.0.3                      172.22.0.4                      172.23.0.5
+                                  172.21.0.3                      172.22.0.4                      
 ```
 Each device runs a **lightweight Ubuntu-based container** with essential networking tools pre-installed.
 (If a package is missing, add it to the Dockerfile and create a PR)
