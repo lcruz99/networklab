@@ -6,9 +6,9 @@
 
 - **Dynamic routing protocols** allow routers to automatically exchange routes.
 - They adapt to topology changes without manual configuration.
-- Two classic IGPs (Interior Gateway Protocols):
-  - **RIP (Routing Information Protocol)** → simple, distance-vector.
-  - **OSPF (Open Shortest Path First)** → advanced, link-state.
+- Two classic IGPs (Interior Gateway Protocols) that we will talk about today:
+  - **RIP (Routing Information Protocol)** : simple, distance-vector.
+  - **OSPF (Open Shortest Path First)** : advanced, link-state.
 
 ---
 
@@ -26,8 +26,8 @@
 - Routers send **entire routing table** every **30 seconds**.
 - Updates sent to **224.0.0.9 (multicast)** in RIPv2.
 - Status check = **timeout**:
-  - 180s → route marked invalid
-  - 240s → route removed
+  - 180s : route marked invalid
+  - 240s : route removed
 
 ### Advantages
 - Very simple to configure.
@@ -45,7 +45,7 @@
 
 ### Basics
 - Type: **Link-State Protocol**
-- Algorithm: **Dijkstra (SPF)**
+- Algorithm: **Dijkstra (SPF)** (cost is calculated based on bandwidth and not ping)
 - Transport: **IP, protocol 89** (not TCP/UDP)
 - Metric: **Cost** (based on bandwidth, configurable)
 
@@ -54,8 +54,6 @@
 - Build a **Link State Database (LSDB)** with full topology.
 - Run SPF to compute shortest paths.
 - Flood incremental updates only when topology changes.
-- Hierarchical design:
-  - **Areas** (Area 0 = backbone).
 
 ### Advantages
 - Fast convergence.

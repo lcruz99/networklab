@@ -16,3 +16,9 @@ pgrep -a zebra
 
 # kernel routing table
 ip route show
+
+# check osfp
+tcpdump -ni any-n proto ospf
+
+# check rip
+tcpdump -ni any udp port 520
