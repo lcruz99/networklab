@@ -18,6 +18,7 @@ services:
     volumes:
       - ./shared/common:/home/ubuntu/common
       - ./shared/client1_data:/home/ubuntu/
+      - ./shared/client1_etc:/etc/frr/
 
   server1:
     hostname: server1
@@ -36,6 +37,7 @@ services:
     volumes:
         - ./shared/common:/home/ubuntu/common
         - ./shared/server1_data:/home/ubuntu/
+        - ./shared/server1_etc:/etc/frr/
 
   server2:
     hostname: server2
@@ -49,6 +51,7 @@ services:
     volumes:
       - ./shared/common:/home/ubuntu/common
       - ./shared/server2_data:/home/ubuntu/
+      - ./shared/server2_etc:/etc/frr/
     cap_add:
       - NET_ADMIN
 
@@ -67,6 +70,8 @@ services:
     volumes:
       - ./shared/common:/home/ubuntu/common
       - ./shared/client2_data:/home/ubuntu/      
+      - ./shared/client2_etc:/etc/frr/
+
 
 networks:
   net1:
