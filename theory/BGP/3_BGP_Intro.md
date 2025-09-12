@@ -50,3 +50,13 @@ When advertising and sharing routes, each router will
 append it's own ASN to the path before passing it on.
 
 ![path_vector](./pic/3_path_vector.png)
+
+## BGP messages
+
+BGP establishes a semi-permanent session with peers over TCP port `179`
+
+- `OPEN` - open a TCP connection to remote BGP peer and authenticate
+- `UPDATE` - advertise new path (or withdraw old)
+- `KEEPALIVE` - keep connection open in absence of `UPDATE`s
+  (Default for CISCO device is 60 seconds).
+- `NOTIFICATION` - report errors, and to close/reject connection
