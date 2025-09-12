@@ -39,3 +39,38 @@ show ip bgp summary
 # show specific neighbour details
 show ip bgp neighbors <IP>
 ```
+
+## Router ID
+
+32-bit number (it looks like an  IP address,
+but it's not required to be a real routable IP,
+Usually the IP of the loopback interface is used, and must be unique within an AS.
+
+An iBGP session between routers with the same BGP identifier will be rejected,
+while an eBGP session is perfectly OK.
+
+```sh
+bgp router-id <ID>
+```
+
+## Loopback
+
+Loopback interfaces are always in UP state as long as the router is running.
+
+As long as ANY path to the router exist, the BGP session stays up,
+even if other links go down.
+
+```sh
+interface Loopback0
+ ip address 10.10.10.1 255.255.255.255
+```
+
+When using Loopbacks, we need to set it as the source
+and enable multi-hop
+
+```sh
+router bgp 65001
+ neighbor 10.10.10.2 remote-as 65002
+ neighbor 10.10.10.2 update-source Loopback0 
+ neighbor 10.10.10.2 ebgp-multihop 2 # enable multihop
+```
